@@ -1,0 +1,82 @@
+<section class="py-5 hotels" id="hotels">
+  <div class="container-fluid">
+    <div class="text-center mb-5">
+      <h1 class="main-heading mb-4">Find Your Perfect Stay</h1>
+      <p>Explore our curated selection of hotels across Egypt.</p>
+    </div>
+
+    <!-- Filter Bar -->
+    <div class="bg-white p-4 rounded-4 shadow-sm mb-5 filter-bar">
+      <div class="row g-4 align-items-end">
+        <div class="col-md-3">
+          <label for="city" class="fw-bold mb-1">City</label>
+          <select id="city" class="form-select rounded-3" [(ngModel)]="selectedCity">
+            <option>All Cities</option>
+            <option>Cairo</option>
+            <option>Giza</option>
+            <option>Luxor</option>
+            <option >Aswan</option>
+            <option >Sharm El Sheikh</option>
+          </select>
+        </div>
+
+        <div class="col-md-3">
+          <label for="price" class="fw-bold mb-1">Price Range</label>
+          <select id="price" class="form-select rounded-3" [(ngModel)]="selectedPrice">
+            <option>Any Price</option>
+            <option>$50 - $100</option>
+            <option>$100 - $200</option>
+            <option>$200 - $500</option>
+            <option>$500+</option>
+          </select>
+        </div>
+
+        <div class="col-md-3">
+          <label for="rating" class="fw-bold mb-1">Rating</label>
+          <select id="rating" class="form-select rounded-3" [(ngModel)]="selectedRating">
+            <option>Any Rating</option>
+            <option>★★★★★</option>
+            <option>★★★★☆ & up</option>
+            <option>★★★☆☆ & up</option>
+          </select>
+        </div>
+
+        <div class="col-md-3">
+          <button 
+          class="btn btn-sm fw-bold rounded-pill shadow main-btn w-100"
+          (click)="filterHotels()">
+          Filter Results
+        </button>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- * Hotels Grid -->
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4" *ngFor="let hotel of filteredHotels">
+        <div class="card border-0 shadow rounded-4 h-100">
+          <img [src]="hotel.image" [alt]="hotel.name" class="card-img-top rounded-top-4">
+          <div class="card-body px-4">
+            <h5 class="card-title fw-bold secondary-color pt-2">{{ hotel.name }}</h5>
+            <h6 class="text-muted fw-semibold">{{ hotel.city }}</h6>
+            <div class="text-muted small mb-2">
+              <span class="text-warning mb-3">
+                <!-- stars -->
+                <ng-container *ngFor="let star of getStars(hotel.rating); let i = index">
+                  <i class="fa-solid fa-star" [ngClass]="{ 'text-secondary opacity-25': star === 'empty' }"></i>
+                </ng-container>
+                </span>
+
+              ({{ hotel.rating }}/5)
+            </div>
+            <p class="text-muted mb-3">
+              Starting from <span class="fw-bold text-dark">${{ hotel.price }}/night</span>
+            </p>
+            <a class="btn btn-sm fw-bold rounded-pill shadow main-btn" (click)="viewDetails(hotel)">Book Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

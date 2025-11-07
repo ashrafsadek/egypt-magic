@@ -1,0 +1,51 @@
+/* ! Global Style */
+p{
+    color: var(--text-main);
+}
+img{
+    max-height: 400px; 
+    object-fit: cover; 
+    width: 100%;
+}
+/* ! Utilites */
+.text-primary-color{
+    color: var(--text-primary);
+}
+
+/* ^ Navigation tabs */
+.nav-tabs .nav-link {
+  border: none;
+  color: #555;
+  transition: all 0.3s ease;
+}
+.nav-tabs .nav-link.active {
+  color: var(--primary-color);
+  border-bottom: 3px solid var(--primary-color);
+}
+.card {
+  transition: transform 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
+}
+
+
+/* ^ Success Popup Modal */
+#successModal .modal-content {
+  animation: popIn 0.4s ease;
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+#successModal .display-4 {
+  font-size: 3rem;
+  font-weight: bold;
+}

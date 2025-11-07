@@ -1,0 +1,39 @@
+<section class="py-5 reviews" id="reviews">
+  <div class="container-fluid">
+    <!-- Main Heading -->
+    <h2 class="mb-5 main-heading">
+      Reviews From Our Travelers
+    </h2>
+
+    <!-- Reviews Grid -->
+    <div class="row g-4">
+      <div class="col-12 col-md-4" *ngFor="let review of reviews">
+        <div class="card shadow border-0 rounded-4 h-100">
+          <div class="card-body p-4">
+            <div class="d-flex align-items-center mb-3 gap-3">
+              <img
+                [src]="review.image"
+                [alt]="review.name"
+                class="rounded-circle object-fit-cover"
+              />
+              <div>
+                <h6 class="fw-bold mb-0">{{ review.name }}</h6>
+                <small class="text-muted">{{ review.date }}</small>
+              </div>
+            </div>
+
+            <!-- Star rating -->
+            <div class="primary-color mb-3">
+                        <ng-container *ngFor="let star of getStars(review.rating); let i = index">
+                        <i class="fa-solid fa-star" [ngClass]="{ 'text-secondary opacity-25': star === 'empty' }"></i>
+                    </ng-container>
+                </div>
+
+            <!-- Review text -->
+            <p>{{ review.comment }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,114 @@
+<section class="py-5 contact" id="contact">
+    <div class="container-fluid">
+    <div class="text-center mb-5">
+        <h1 class="main-heading mb-4">Get In Touch</h1>
+        <p>Have questions or ready to plan your Egyptian adventure? We're here to help.
+        Reach out <br> to us, and let's make the magic happen.</p>
+    </div>
+
+    <div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+        <form
+            (ngSubmit)="sendEmail(contactForm)"
+            #contactForm="ngForm"
+            class="p-5 border-0 rounded-4 shadow bg-white"
+            novalidate
+        >
+            <h3 class="mb-4 fw-bold secondary-color">Send Us a Message</h3>
+
+            <!-- Name -->
+            <div class="mb-3">
+            <label for="from_name" class="form-label">Name</label>
+            <input
+                type="text"
+                id="from_name"
+                name="from_name"
+                ngModel
+                required
+                pattern="^[A-Za-z\s]+$"
+                placeholder="Your full name"
+                #name="ngModel"
+                class="form-control"
+            />
+            <div *ngIf="name.invalid && name.touched" class="text-danger small mt-1">
+                <div *ngIf="name.errors?.['required']">This field is required.</div>
+                <div *ngIf="name.errors?.['pattern']">Only letters and spaces are allowed.</div>
+            </div>
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+            <label for="from_email" class="form-label">Email</label>
+            <input
+                type="email"
+                id="from_email"
+                name="from_email"
+                ngModel
+                required
+                pattern="^[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                placeholder="you@example.com"
+                #email="ngModel"
+                class="form-control"
+            />
+            <div *ngIf="email.invalid && email.touched" class="text-danger small mt-1">
+                <div *ngIf="email.errors?.['required']">Email is required.</div>
+                <div *ngIf="email.errors?.['pattern']">Enter a valid email address.</div>
+            </div>
+            </div>
+
+            <!-- Subject -->
+            <div class="mb-3">
+            <label for="subject" class="form-label">Subject</label>
+            <input
+                type="text"
+                id="subject"
+                name="subject"
+                ngModel
+                required
+                placeholder="What is your message about?"
+                #subject="ngModel"
+                class="form-control"
+            />
+            <div *ngIf="subject.invalid && subject.touched" class="text-danger small mt-1">
+                This field is required.
+            </div>
+            </div>
+
+            <!-- Message -->
+            <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea
+                id="message"
+                name="message"
+                ngModel
+                required
+                rows="5"
+                placeholder="Write your message here..."
+                #message="ngModel"
+                class="form-control"
+            ></textarea>
+            <div *ngIf="message.invalid && message.touched" class="text-danger small mt-1">
+                This field is required.
+            </div>
+            </div>
+
+            <!-- Validation message -->
+            <div *ngIf="showValidationMessage" class="alert alert-warning py-2 small">
+            You must fill all fields first.
+            </div>
+
+            <!-- Submit button -->
+            <div class="text-end">
+            <button type="submit" class="btn btn-sm fw-bold rounded-pill shadow main-btn">Submit</button>
+            </div>
+
+            <p class="text-center mt-3 text-success fw-semibold" *ngIf="statusMessage">
+            {{ statusMessage }}
+            </p>
+        </form>
+        </div>
+    </div>
+    </div>
+    </div>
+</section>

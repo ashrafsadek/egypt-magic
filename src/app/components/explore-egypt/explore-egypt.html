@@ -1,0 +1,72 @@
+  <section class="py-5 explore-egypt" id="explore-egypt">
+    <div class="container-fluid">
+      <div class="text-center mb-5">
+        <h2 class="main-heading mb-4">Explore Egypt</h2>
+        <p>
+          Explore the rich tapestry of Egypt's cities and governorates. Each destination offers a unique
+          glimpse <br> into the country's ancient history and vibrant present.
+        </p>
+      </div>
+      
+    <!-- & Cards Section --> 
+    <div class="row g-4">
+      <div
+        class="col-12 col-md-4"
+        *ngFor="let city of cities" (click)="exploreCity(city, $event)"
+      >
+        <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
+          <img
+            [src]="city.image" [alt]="city.name"
+            class="city-image"
+          />
+          <div class="card-body px-4 pt-4">
+            <h5 class="card-title fw-bold primary-color">
+              {{ city.name }}
+            </h5>
+            <p class="card-text">
+              {{ city.shortDesc }}
+            </p>
+
+            <button class="btn btn-sm fw-bold w-100 rounded-4 shadow main-btn"
+          (click)="$event.stopPropagation(); exploreCity(city, $event)"
+        >
+          Explore
+        </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- & City Details Section -->
+    <div class="city-details" *ngIf="selectedCity">
+      <button class="close-btn" (click)="closeDetails()">✕</button>
+
+      <div class="details-text">
+        <h2 class="primary-color mb-4 fw-bold">
+          {{ selectedCity.name }} :
+          <span>{{ selectedCity.title }}</span>
+        </h2>
+        <p>{{ selectedCity.description }}</p>
+
+        <h4 class="fw-bold secondary-color my-4">Main Attractions</h4>
+        <ul>
+          <li *ngFor="let attraction of selectedCity.attractions">{{ attraction }}</li>
+        </ul>
+      </div>
+
+      <div class="details-images">
+        <img
+          *ngFor="let img of selectedCity.gallery"
+          [src]="img"
+          alt="City view"
+          (click)="openPreview(img)"
+        />
+      </div>
+    </div>
+
+    <!-- & Image Preview Overlay -->
+    <div class="image-preview" *ngIf="previewImage" (click)="closePreview()">
+      <img [src]="previewImage" alt="Preview" />
+    </div>
+    </div>
+  </section>

@@ -1,0 +1,208 @@
+<!-- ! Hero Section -->
+<section class="container-fluid hero-section w-100 d-flex align-items-center justify-content-center position-relative overflow-hidden" id="hero">
+    <div class="overlay position-absolute top-0 start-0 w-100 h-100"></div>
+    <div class="content text-white text-center position-relative">
+      <h1 class="fw-bold">Magic of Egypt</h1>
+      <p class="mb-4">Your gateway to the land of pharaohs</p>
+      <button class="btn btn-sm fw-bold rounded-4 shadow main-btn">Explore Now</button>
+    </div>
+</section>
+
+<!-- ! divider -->
+<div class="wave-divider"></div>
+
+<!-- ! About Section -->
+<section class="container-fluid about-section" id="about">
+  <div class="text-center">
+    <h2 class="main-heading">About Magic of Egypt</h2>
+    <p class="mt-4 mx-auto">
+      Welcome to Magic of Egypt, your premier guide to exploring the wonders of this ancient land.
+      We offer curated travel experiences, from the majestic pyramids to the serene Nile cruises,
+      ensuring an unforgettable journey through Egypt's rich history and vibrant culture.
+    </p>
+  </div>
+</section>
+
+<!-- ! Cities Section -->
+<section class="container-fluid cities" id="cities">
+  <div class="container-fluid">
+    <!-- Main Heading -->
+    <h2 class="mb-5 main-heading">
+      Popular Cities
+    </h2>
+
+    <!-- Cities Grid -->
+    <div class="row g-4">
+      <div
+        class="col-12 col-md-4"
+        *ngFor="let destination of destinations"
+      >
+        <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
+          <img
+            [src]="destination.image"
+            [alt]="destination.name"
+            class="card-img-top"
+          />
+          <div class="card-body px-4 pt-4">
+            <h5 class="card-title fw-bold primary-color">
+              {{ destination.name }}
+            </h5>
+            <p class="card-text">
+              {{ destination.description }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- View All Cities -->
+    <div class="text-center mt-5">
+      <a routerLink="/explore-egypt" class="btn btn-sm fw-bold rounded-4 shadow main-btn">
+        View All Cities
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ! Interactive Map -->
+<section id="map-section">
+    <div class="map-wrapper">
+      <div class="map-box">
+        <img src="/images/map.png" alt="Map of Egypt" class="map-image" />
+
+        <!--(click) --> 
+        <button
+          class="map-marker"
+          style="top: 30%; left: 45%"
+          (click)="toggleCity('cairo', 0)"
+          [attr.aria-pressed]="isactive === 0"
+          aria-label="Cairo"
+          type="button"
+        >
+          <span class="map-marker-dot" [class.active]="isactive === 0"></span>
+          <span class="map-marker-label">Cairo</span>
+        </button>
+
+        <button
+          class="map-marker"
+          style="top: 55%; left: 50%"
+          (click)="toggleCity('luxor', 1)"
+          [attr.aria-pressed]="isactive === 1"
+          aria-label="Luxor"
+          type="button"
+        >
+          <span class="map-marker-dot" [class.active]="isactive === 1"></span>
+          <span class="map-marker-label">Luxor</span>
+        </button>
+
+        <button
+          class="map-marker"
+          style="top: 85%; left: 72%"
+          (click)="toggleCity('aswan', 2)"
+          [attr.aria-pressed]="isactive === 2"
+          aria-label="Aswan"
+          type="button"
+        >
+          <span class="map-marker-dot" [class.active]="isactive === 2"></span>
+          <span class="map-marker-label">Aswan</span>
+        </button>
+
+        <button
+          class="map-marker"
+          style="top: 25%; left: 35%"
+          (click)="toggleCity('alexandria', 3)"
+          [attr.aria-pressed]="isactive === 3"
+          aria-label="Alexandria"
+          type="button"
+        >
+          <span class="map-marker-dot" [class.active]="isactive === 3"></span>
+          <span class="map-marker-label">Alexandria</span>
+        </button>
+      </div>
+
+      <!-- details -->
+      <div class="city-details-box">
+        <div *ngIf="!currentCity" class="default-message">
+          <p class="p4">Click a city on the map to see details.</p>
+        </div>
+
+        <div *ngIf="currentCity === 'cairo'" class="city-details">
+          <img class="city-img" src="/images/cities/cairo.jpg" alt="Cairo" />
+          <h3 class="p-4 fw-bold">Cairo</h3>
+          <p class="px-4">The vibrant capital, home to the Giza Pyramids and Egyptian Museum.</p>
+        </div>
+
+        <div *ngIf="currentCity === 'luxor'" class="city-details">
+          <img class="city-img" src="/images/cities/luxor.webp" alt="Luxor" />
+          <h3 class="p-4 fw-bold">Luxor</h3>
+          <p class="px-4">Known as the world’s greatest open-air museum with Karnak and Luxor Temples.</p>
+        </div>
+
+        <div *ngIf="currentCity === 'aswan'" class="city-details">
+          <img class="city-img" src="/images/cities/aswan.jpg" alt="Aswan" />
+          <h3 class="p-4 fw-bold">Aswan</h3>
+          <p class="px-4">A serene Nile city rich in Nubian culture and heritage.</p>
+        </div>
+
+        <div *ngIf="currentCity === 'alexandria'" class="city-details">
+          <img class="city-img" src="/images/cities/alexandria.jpg" alt="Alexandria" />
+          <h3 class="p-4 fw-bold">Alexandria</h3>
+          <p class="px-4">Egypt’s coastal gem known for the Bibliotheca Alexandrina and Citadel of Qaitbay.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- ! Weather Section -->
+<app-weather></app-weather>
+
+<!-- ! Hotels Section -->
+<section class=" container-fluid py-5 hotels" id="hotels">
+  <div class="container-fluid">
+    <!-- Main Heading -->
+    <h2 class=" mb-5 main-heading">
+      Hotels We Recommend
+    </h2>
+
+    <!-- Hotels Grid -->
+    <div class="row g-4 hotels-grid">
+      <div class="col-12 col-md-4" *ngFor="let hotel of hotels">
+        <div class="card h-100 shadow border-0 rounded-4 overflow-hidden">
+          <img
+            [src]="hotel.image"
+            class="card-img-top"
+            [alt]="hotel.name"
+          />
+          <div class="card-body px-4">
+            <h5 class="card-title fw-bold my-2 primary-color">
+              {{ hotel.name }}
+            </h5>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <div>
+                <p class="fw-bold mb-1">${{ hotel.price }} / night</p>
+                <div class="primary-color">
+                        <ng-container *ngFor="let star of getStars(hotel.rating); let i = index">
+                        <i class="fa-solid fa-star" [ngClass]="{ 'text-secondary opacity-25': star === 'empty' }"></i>
+                    </ng-container>
+                  <span class="text-muted ms-1 small">({{ hotel.rating }})</span>
+                </div>
+              </div>
+              <button class="btn btn-sm fw-bold rounded-4 shadow main-btn">
+                Book Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- View All Hotels -->
+    <div class="text-center mt-5">
+      <a routerLink="/hotels" class="btn fw-bold rounded-4 shadow main-btn">
+        View All Hotels
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ! Reviews Section -->
+<app-reviews></app-reviews>

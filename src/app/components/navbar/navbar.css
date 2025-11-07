@@ -1,0 +1,18 @@
+header{
+    background-color: #f7f4efcc;
+    backdrop-filter: blur(4px);
+}
+header img{
+    width: 40px;
+    height: 40px;
+}
+.nav-link{
+    color: var(--text-primary);
+    transition: color 0.3s;
+}
+.active-link{
+    color: var(--primary-color);
+}
+.nav-link:hover{
+    color: var(--primary-color);
+}

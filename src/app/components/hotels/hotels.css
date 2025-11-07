@@ -1,0 +1,35 @@
+/* ! Global Style */
+p, label{
+    color: var(--text-muted);
+}
+select{
+    padding: 12px;
+}
+.main-btn{
+    padding: 8px 24px;
+    font-size: 14px;
+}
+.main-btn:hover{
+    background-color: rgba(0, 118, 182, 0.9);
+}
+img{
+    height: 235px;
+    object-fit: cover;
+}
+
+
+.main-heading + p{
+    font-size: 18px;
+}
+.filter-bar .main-btn{
+    font-size: 18px;
+    background-color: rgba(201, 163, 76, 0.9);
+    padding: 12px 32px;
+}
+.card{
+    transition: 0.3s all;
+    cursor: pointer;
+}
+.card:hover{
+    transform: translateY(-8px);
+}

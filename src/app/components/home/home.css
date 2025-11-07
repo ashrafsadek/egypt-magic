@@ -1,0 +1,185 @@
+/* ! global style */
+p{
+  color: var(--text-primary);
+}
+img{
+  height: 225px;
+  object-fit: cover;
+}
+/* main heading */
+.main-heading{
+  font-size: 36px;
+}
+
+
+/* & Section With Same Style */
+/* ! - Hero Section - main-btn */
+/* ! - Hotels Section - main-btn */
+.content .main-btn,
+.hotels-grid .main-btn{
+  background-color: var(--primary-color);
+}
+.content .main-btn:hover,
+.hotels-grid .main-btn:hover{
+  background-color: var(--primary-color);
+}
+.content .main-btn:active,
+.content .main-btn:focus-visible, 
+.hotels-grid .main-btn:active,
+.hotels-grid .main-btn:focus-visible{
+  background-color: var(--primary-color);
+}
+
+
+/* ! Hero Section */
+.hero-section {
+  height: 60vh;
+  background: url('/images/hero.png') center/cover no-repeat;
+}
+.overlay {
+  background: rgba(0, 0, 0, 0.4);
+}
+.content {
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 20px;
+}
+.content h1 {
+  font-size: 60px;
+}
+.content p {
+  font-size: 20px;
+  color: #fff;
+}
+
+/* ! Divider */
+.wave-divider {
+  width: 100%;
+  height: 50px;
+}
+
+
+/* ! About Section */
+.about-section {
+  padding: 5rem 1.5rem; 
+}
+.about-section p {
+  max-width: 48rem;
+  line-height: 1.75rem;
+  font-size: 18px;
+}
+
+/* ! Map Section*/
+#map-section {
+  padding: 2.5rem 1rem;
+}
+.map-wrapper {
+  display: flex;
+  gap: 1.5rem;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+.map-box {
+  position: relative;      
+  flex: 1 1 560px;
+  max-width: 700px;
+  height: 550px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(11, 9, 9, 0.08);
+}
+.map-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none; 
+}
+.map-marker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  z-index: 20; 
+  outline: none;
+}
+.map-marker-dot {
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #c9a44c;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: transform .12s ease, background-color .12s;
+}
+.map-marker-dot.active{
+  background-color:#0077b6 ;
+  transform: scale(1.5);
+}
+/* label مخفي افتراضياً ثم يظهر عند التركيز/هفن/تحديد */
+.map-marker-label {
+  position: absolute;
+  top: -34px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary-color);
+  color: #fff;
+  padding: 6px 8px;
+  border-radius: 6px;
+  font-size: 13px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+  white-space: nowrap;
+  display: none;
+}
+
+/* العرض عند hover أو focus (للـ keyboard accessibility) */
+.map-marker:hover .map-marker-label,
+.map-marker:focus .map-marker-label {
+  display: block;
+  background-color: var(--primary-color);
+}
+
+/* details box */
+.city-details-box {
+  flex: 1 1 320px;
+  min-width: 260px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+.city-details-box h3{
+  text-align: left;
+  color: var(--primary-color);
+  font-family: var(--heading-font);
+}
+.city-img{
+  width: 100%;
+  height: 50vh;
+}
+
+/* responsiveness */
+@media (max-width: 900px) {
+  .map-wrapper {
+    flex-direction: column;
+  }
+  .map-box { height: 420px; max-width: 100%; }
+}
+
+
+/* ! Hotels Section */
+.hotels p{
+  font-size: 18px;
+}
+.hotels i{
+  font-size: 14px;
+}
+.hotels-grid .main-btn{
+  padding: 8px 16px;
+  font-size: 14px;
+}

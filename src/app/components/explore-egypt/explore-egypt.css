@@ -1,0 +1,134 @@
+/* ! Global Style */
+p{
+  color: var(--text-primary);
+}
+img{
+  height: 225px;
+  object-fit: cover;
+}
+
+.main-heading + p{
+  font-size: 18px;
+}
+
+
+/* ! City Details */
+.city-details {
+  position: relative;
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+  align-items: flex-start;
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--secondary-color);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  z-index: 2;
+}
+
+.close-btn:hover {
+  background: #005f8f;
+}
+
+.details-text {
+  flex: 1.3;
+}
+
+.details-text p {
+  line-height: 1.6;
+}
+
+.details-text ul {
+  list-style: disc;
+  margin-left: 1.5rem;
+  color: var(--text-primary);
+}
+
+
+
+/* ! Images Grid  */
+.details-images {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.details-images img {
+  width: 100%;
+  height: 180px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.details-images img:hover {
+  transform: scale(1.05);
+}
+.image-preview {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  cursor: zoom-out;
+}
+
+.image-preview img {
+  width: 70%;
+  height: 70%;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.image-preview img:hover {
+  transform: scale(1.02);
+}
+
+.details-images img {
+  cursor: zoom-in;
+  transition: transform 0.2s ease;
+}
+
+.details-images img:hover {
+  transform: scale(1.05);
+}
+
+
+/* ! Responsive  */
+@media (max-width: 900px) {
+  .city-details {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  .details-images {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 400px) {
+  .details-images {
+    grid-template-columns: 1fr;
+  }
+}

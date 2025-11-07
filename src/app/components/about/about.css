@@ -1,0 +1,131 @@
+/* ! Global Style */
+p{
+  color: var(--text-primary);
+}
+img{
+  width: 90%;
+  height: 80%;
+  object-fit: cover;
+}
+.main-heading + p{
+  font-size: 18px;
+}
+
+/* ! Person Details */
+.details {
+  position: relative;
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+  align-items: flex-start;
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--secondary-color);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  z-index: 2;
+}
+.close-btn:hover {
+  background: #005f8f;
+}
+
+.details-text {
+  flex: 2;
+}
+
+
+
+.details-text p {
+  line-height: 2;
+  margin-bottom: 1.5rem;
+}
+
+/* ! Images Grid  */
+.details-images {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* صورتين جنب بعض */
+  gap: 1rem;
+  justify-items: center; /* علشان الصور تتوسّط فى العمود */
+}
+
+.details-images img {
+  width: 280px;         /* ✅ حجم ثابت للعرض */
+  height: 50vh;        /* ✅ حجم ثابت للطول */
+  border-radius: 10px;
+  object-fit: cover;    /* الصورة تتظبط داخل الإطار */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  cursor: zoom-in;
+}
+
+.details-images img:hover {
+  transform: scale(1.05);
+}
+
+/* !Image Preview Overlay */
+.image-preview {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  cursor: zoom-out;
+}
+
+.image-preview img {
+  width: 30%;
+  height: 70%;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.image-preview img:hover {
+  transform: scale(1.02);
+}
+
+/* ! Responsive */
+/* ✅ تعديل الترتيب على الشاشات الصغيرة */
+@media (max-width: 900px) {
+  .details {
+    flex-direction: column; /* الصور تنزل تحت النص */
+    align-items: center;
+  }
+
+  .details-text {
+    order: 1; /* النص الأول */
+    width: 90%;
+  }
+
+  .details-images {
+    order: 2; /* الصور بعد النص */
+    grid-template-columns: 1fr; /* صورة تحت صورة */
+    justify-items: center;
+    width: 90%;
+  }
+
+  .details-images img {
+    width: 100%;
+    height: auto;
+  }
+  .image-preview img{
+    width: 60%;
+  }
+}

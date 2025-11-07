@@ -1,0 +1,22 @@
+/* ! Global Style */
+p, label{
+    color: var(--text-muted);
+}
+.main-heading{
+    font-size: 60px;
+}
+
+p{
+    font-size: 20px;
+}
+h3{
+    font-size: 30px;
+}
+.main-btn{
+    font-size: 16px;
+    padding: 12px 32px;
+    background-color: var(--primary-color);
+}
+.main-btn:hover{
+    background-color: rgba(201, 164, 76, 0.9);
+}

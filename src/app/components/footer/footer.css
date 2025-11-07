@@ -1,0 +1,24 @@
+footer{
+    background-color: #1e1e1e;
+}
+/*  Left section */
+footer .left-sec h5{
+    font-size: 18px;
+}
+footer .left-sec p{
+    font-size: 14px;
+    color: #a8a29e;
+}
+/* Right section */
+footer .right-sec a{
+    color: #a8a29e;
+    transition: color 0.3s;
+}
+footer .right-sec a:hover{
+    color: var(--primary-color);
+}
+/* Bottom section */
+footer .bottom-sec p{
+    font-size: 12px;
+    color: #78716c;
+}

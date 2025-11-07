@@ -1,0 +1,40 @@
+<header id="head" class="fixed-top shadow-sm" id="navbar">
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <!-- Logo + Site Title -->
+            <div class="navbar-brand d-flex align-items-center gap-2">
+                <img src="images/logo.png" alt="Magic of Egypt Logo" class="img-fluid"/>
+                <h1 class="h4 fw-bold mb-0 primary-color heading">Magic of Egypt</h1>
+            </div>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navigation -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-lg-4">
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" aria-current="page" routerLink="/home" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" routerLink="/explore-egypt" routerLinkActive="active-link">Explore Egypt</a>
+                    </li>        
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" routerLink="/hotels" routerLinkActive="active-link">Hotels</a>
+                    </li>        
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" routerLink="/trip-planer" routerLinkActive="active-link">Trip Planner</a>
+                    </li>        
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" routerLink="/about" routerLinkActive="active-link">Our Legends</a>
+                    </li>        
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" routerLink="/contact" routerLinkActive="active-link">Contact</a>
+                    </li>        
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+

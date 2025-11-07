@@ -1,0 +1,12 @@
+/* main heading */
+.main-heading{
+    font-size: 36px;
+}
+/* horizontal scrolling */
+.scroll-area {
+  cursor: grab;
+}
+
+.scroll-area:active {
+  cursor: grabbing;
+}
