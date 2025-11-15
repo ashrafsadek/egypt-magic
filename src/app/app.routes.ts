@@ -13,7 +13,7 @@ export const routes: Routes = [
     {path: 'home', component: Home},
     {path: '', redirectTo: '/home', pathMatch:'full'},
     {path: 'hotels', component: Hotels},
-    {path: 'hotels/:id', component: HotelDetails},
+    {path: 'hotels/:id', component: HotelDetails, data: { prerender: false }},
     {path: 'explore-egypt', component: ExploreEgypt},
     {path: 'trip-planer', component: TripPlannerComponent},
     {path: 'your-trip', component: YourTripComponent},
