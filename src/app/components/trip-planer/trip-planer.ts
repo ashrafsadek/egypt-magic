@@ -329,8 +329,6 @@ export class TripPlannerComponent implements OnInit, OnDestroy {
     }
 
     private loadPlan() {
-    // ✔ Prevent SSR crash
-    if (typeof window === 'undefined') return;
         const saved = localStorage.getItem('egypt-trip-plan');
         if (saved) {
             try {
