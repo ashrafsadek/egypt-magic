@@ -1,0 +1,132 @@
+:root {
+    --primary: #C9A44C;
+    --secondary: #0077B6;
+    --background: #F7F4EF;
+    --text-main: #333333;
+    --text-muted: #666666;
+}
+
+._bg-background_ {
+    background-color: var(--background) !important;
+}
+
+._text-primary_,
+._text-gold_ {
+    color: var(--primary) !important;
+}
+
+._text-secondary_,
+._text-nile_ {
+    color: var(--secondary) !important;
+}
+
+._text-main_ {
+    color: var(--text-main) !important;
+}
+
+._text-muted_ {
+    color: var(--text-muted) !important;
+}
+
+._bg-primary_,
+._bg-gold_ {
+    background-color: var(--primary) !important;
+}
+
+._bg-secondary_,
+._bg-nile_ {
+    background-color: var(--secondary) !important;
+}
+
+._bg-white_ {
+    background-color: #fff !important;
+}
+
+._bg-footer_ {
+    background-color: #1E1E1E !important;
+}
+
+._rounded-xl_ {
+    border-radius: 1rem !important;
+}
+
+._rounded-full_ {
+    border-radius: 9999px !important;
+}
+
+._shadow_ {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05) !important;
+}
+
+.font-heading,
+.font-headings {
+    font-family: 'Poppins', sans-serif;
+}
+
+.font-body {
+    font-family: 'Cairo', sans-serif;
+}
+
+@media (max-width: 576px) {
+    ._rounded-xl_ {
+        border-radius: 0.5rem !important;
+    }
+
+    ._rounded-full_ {
+        border-radius: 2rem !important;
+    }
+
+    .display-5 {
+        font-size: 2rem;
+    }
+}
+
+.cursor-pointer {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.cursor-pointer:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.modal.show {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.cursor-pointer {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.cursor-pointer:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.modal.show {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.cursor-pointer {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.cursor-pointer:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.modal.show {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.days .main-btn{
+    padding: 8px 16px;
+    font-size: 14px;
+}
+.days .main-btn:hover{
+  transform: scale(1.01);
+}

@@ -70,7 +70,7 @@ h1, h2, h3, h4, h5, h6{
   color: #fff;
   background-color: var(--secondary-color);
 }
-.btn:first-child:active,
+.main-btn.btn:first-child:active,
 :not(.btn-check) + .btn:active,
 .main-btn:active,
 .main-btn:focus-visible{

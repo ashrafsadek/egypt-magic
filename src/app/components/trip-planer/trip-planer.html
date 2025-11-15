@@ -1,1 +1,135 @@
-<p>trip-planer works!</p>
+<!-- src/app/trip-planner/trip-planner.component.html -->
+<main class="pt-5 pb-4" style="margin-top: 80px;">
+    <div class="container">
+        <div class="text-center mb-4">
+            <h1 class="display-5 fw-bold secondary-color">Trip Planner</h1>
+            <p class="lead text-secondary">Craft your personalized Egyptian adventure.</p>
+        </div>
+
+        <!-- Selected Cities -->
+        <div class="bg-white p-4 rounded shadow mb-4">
+            <h2 class="h5 fw-bold secondary-color mb-3">Selected Cities</h2>
+            <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+                <div *ngFor="let city of selectedCities"
+                    class="d-flex align-items-center bg-info bg-opacity-25 secondary-color fw-bold py-2 px-3 rounded-pill me-2">
+                    <span>{{ city.name }}</span>
+                    <button class="btn btn-link btn-sm secondary-color ms-2 p-0" (click)="removeCity(city)" title="Remove">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <button class="btn btn-outline-secondary fw-bold rounded-pill ms-2" (click)="showCityModal = true">
+                    <i class="fas fa-plus"></i> Add City
+                </button>
+            </div>
+        </div>
+
+        <!-- Days -->
+        <div class="mb-4 days">
+            <div *ngFor="let day of days; let dayIndex = index"
+                class="bg-white p-4 rounded shadow mb-3 position-relative">
+                <button class="btn btn-link text-danger position-absolute top-0 end-0 mt-2 me-2"
+                    (click)="removeDay(day)" title="Remove Day">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+                <h3 class="h4 fw-bold secondary-color mb-3">Day {{ dayIndex + 1 }}</h3>
+                <div class="mb-3">
+                    <div *ngFor="let activity of day.activities; let actIndex = index"
+                        class="d-flex flex-column flex-md-row align-items-start align-items-md-center gap-3 p-3 border rounded mb-2">
+                        <img [src]="activity.event.image" [alt]="activity.event.name" class="rounded"
+                            style="width: 120px; height: 90px; object-fit: cover;"
+                            onerror="this.src='https://via.placeholder.com/120x90?text=Image'">
+                        <div class="flex-grow-1">
+                            <h4 class="fw-bold mb-1">{{ activity.event.name }}</h4>
+                            <p class="text-secondary mb-0">
+                                {{ activity.event.description }}
+                                <small class="d-block text-muted">{{ getCityName(activity.event.cityId) }}</small>
+                            </p>
+                        </div>
+                        <button class="btn btn-link text-danger ms-auto" (click)="removeActivity(day, actIndex)"
+                            title="Remove Activity">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </div>
+                    <div *ngIf="day.activities.length === 0" class="text-muted text-center py-3">
+                        No activities yet. Click "Add Activity" to start.
+                    </div>
+                </div>
+                <button class="btn btn-sm fw-bold rounded-pill shadow main-btn" (click)="openActivityModal(day)">
+                    <i class="fas fa-plus"></i> Add Activity
+                </button>
+            </div>
+
+            <button class="btn btn-sm fw-bold rounded-pill shadow w-100 main-btn" (click)="addDay()">
+                <i class="fas fa-plus"></i> Add Day
+            </button>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="d-flex flex-column flex-md-row justify-content-center align-items-center gap-3">
+            <button class="btn btn-success fw-bold rounded-pill px-4 mb-2 mb-md-0" (click)="viewTripPlan()">
+                <i class="fas fa-eye"></i> View My Trip
+            </button>
+            <button class="btn btn-outline-danger fw-bold rounded-pill px-4" (click)="deletePlan()">
+                <i class="fas fa-trash"></i> Delete Plan
+            </button>
+        </div>
+    </div>
+</main>
+
+<!-- City Modal -->
+<div class="modal fade" [ngClass]="{'show d-block': showCityModal}" tabindex="-1" *ngIf="showCityModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Select a City</h5>
+                <button type="button" class="btn-close" (click)="showCityModal = false"></button>
+            </div>
+            <div class="modal-body">
+                <div class="list-group">
+                    <button *ngFor="let city of allCities" class="list-group-item list-group-item-action"
+                                            (click)="addCity(city)">
+                                            {{ city.name }}
+                                        </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Activity Modal -->
+<div class="modal fade" [ngClass]="{'show d-block': showActivityModal}" tabindex="-1" *ngIf="showActivityModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add Activity</h5>
+                <button type="button" class="btn-close" (click)="showActivityModal = false"></button>
+            </div>
+            <div class="modal-body" style="max-height: 70vh; overflow-y: auto;">
+                <div *ngIf="getAvailableEvents().length === 0" class="text-center text-muted py-5">
+                    <p class="mb-0">No activities available. Try selecting more cities or remove used events.</p>
+                </div>
+                <div *ngFor="let group of getEventsByCity()" class="mb-4">
+                    <h6 class="fw-bold text-primary border-bottom pb-2 mb-3">{{ group.city.name }}</h6>
+                    <div class="row row-cols-1 row-cols-md-2 g-3">
+                        <div *ngFor="let event of group.events" class="col">
+                            <div class="card h-100 border-0 shadow-sm cursor-pointer" (click)="addActivityToDay(event)">
+                                <img [src]="event.image" class="card-img-top" [alt]="event.name"
+                                    style="height: 140px; object-fit: cover;"
+                                    onerror="this.src='https://via.placeholder.com/300x140?text=No+Image'">
+                                <div class="card-body d-flex flex-column">
+                                    <h6 class="card-title fw-bold mb-1">{{ event.name }}</h6>
+                                    <p class="card-text text-secondary small flex-grow-1">{{ event.description }}</p>
+                                    <button class="btn btn-sm btn-primary mt-2">Add</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Backdrop -->
+<div class="modal-backdrop fade show" *ngIf="showCityModal || showActivityModal"
+    (click)="showCityModal = false; showActivityModal = false"></div>

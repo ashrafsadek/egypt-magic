@@ -29,6 +29,9 @@ export class HotelDetails implements OnInit {
 
   confirmBooking() {
   if (this.selectedRoom) {
+    // Save booking in local storage
+    this.saveBooking();
+
     // Close booking modal
     const bookingModal = document.getElementById('bookingModal');
     const modalInstance = bootstrap.Modal.getInstance(bookingModal!);
@@ -39,6 +42,19 @@ export class HotelDetails implements OnInit {
     successModal.show();
   }
 }
+
+  // Saving hotel to local storage 
+  saveBooking() {
+    if (this.hotel && this.selectedRoom) {
+      const bookingData = {
+        hotel: this.hotel,
+        room: this.selectedRoom,
+        date: new Date().toISOString()
+      };
+      localStorage.setItem('hotelBooking', JSON.stringify(bookingData));
+    }
+}
+
 
   // show stars
   getStars(rating: number): ('full' | 'empty')[] {
