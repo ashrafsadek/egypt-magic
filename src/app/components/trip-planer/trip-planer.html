@@ -36,8 +36,7 @@
                     <div *ngFor="let activity of day.activities; let actIndex = index"
                         class="d-flex flex-column flex-md-row align-items-start align-items-md-center gap-3 p-3 border rounded mb-2">
                         <img [src]="activity.event.image" [alt]="activity.event.name" class="rounded"
-                            style="width: 120px; height: 90px; object-fit: cover;"
-                            onerror="this.src='https://via.placeholder.com/120x90?text=Image'">
+                            style="width: 120px; height: 90px; object-fit: cover;">
                         <div class="flex-grow-1">
                             <h4 class="fw-bold mb-1">{{ activity.event.name }}</h4>
                             <p class="text-secondary mb-0">
@@ -114,8 +113,7 @@
                         <div *ngFor="let event of group.events" class="col">
                             <div class="card h-100 border-0 shadow-sm cursor-pointer" (click)="addActivityToDay(event)">
                                 <img [src]="event.image" class="card-img-top" [alt]="event.name"
-                                    style="height: 140px; object-fit: cover;"
-                                    onerror="this.src='https://via.placeholder.com/300x140?text=No+Image'">
+                                    style="height: 140px; object-fit: cover;">
                                 <div class="card-body d-flex flex-column">
                                     <h6 class="card-title fw-bold mb-1">{{ event.name }}</h6>
                                     <p class="card-text text-secondary small flex-grow-1">{{ event.description }}</p>
