@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-explore-egypt',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './explore-egypt.html',
   styleUrls: ['./explore-egypt.css'],
 })

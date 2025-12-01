@@ -1,9 +1,9 @@
 import { Component, ElementRef, OnInit, viewChild, ViewChild } from '@angular/core';
 import { WeatherService } from '../../services/weather-service';
-import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-weather',
-  imports: [CommonModule],
+  imports: [],
   standalone: true,
   templateUrl: './weather.html',
   styleUrl: './weather.css'

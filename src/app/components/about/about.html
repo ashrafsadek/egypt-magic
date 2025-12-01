@@ -3,53 +3,57 @@
     <div class="text-center mb-5">
       <h1 class="main-heading mb-4">Our Legends</h1>
       <p> Egypt is home to legendary figures who have enriched the world with their achievements,
-      talents,<br> and knowledge, leaving an everlasting mark on human history.</p>
-    </div>
+        talents,<br> and knowledge, leaving an everlasting mark on human history.</p>
+      </div>
 
-    <!-- ^ Cards Section -->
-     <div class="row g-4">
-      <div
-        class="col-12 col-md-6 col-lg-3"
-        *ngFor="let famous of famousEgyptians"
-        (click)="explorefamous(famous, $event)"
-      >
-        <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
-          <img
-            [src]="famous.image" [alt]="famous.name"
-            class="card-image mx-auto mt-3 rounded-4"
-          />
-          <div class="card-body px-4 pt-4 pb-0">
-            <h5 class="card-title fw-bold secondary-color p-0">
-              {{ famous.name }}
-            </h5>
-          </div>
+      <!-- ^ Cards Section -->
+      <div class="row g-4">
+        @for (famous of famousEgyptians; track famous) {
+          <div
+            class="col-12 col-md-6 col-lg-3"
+            (click)="explorefamous(famous, $event)"
+            >
+            <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
+              <img
+                [src]="famous.image" [alt]="famous.name"
+                class="card-image mx-auto mt-3 rounded-4"
+                />
+                <div class="card-body px-4 pt-4 pb-0">
+                  <h5 class="card-title fw-bold secondary-color p-0">
+                    {{ famous.name }}
+                  </h5>
+                </div>
+              </div>
+            </div>
+          }
         </div>
+
+        @if (selectedfamous) {
+          <div class="details">
+            <button class="close-btn" (click)="closeDetails()">✕</button>
+            <div class="details-text">
+              <h2 class="primary-color mb-4 fw-bold">
+                {{ selectedfamous.name }}
+              </h2>
+              <p>{{ selectedfamous.description }}</p>
+            </div>
+            <div class="details-images">
+              @for (img of selectedfamous.gallery; track img) {
+                <img
+                  [src]="img"
+                  alt="famous view"
+                  (click)="openPreview(img)"
+                  />
+              }
+            </div>
+          </div>
+        }
+
+        <!-- ^ Image Preview Overlay -->
+        @if (previewImage) {
+          <div class="image-preview" (click)="closePreview()">
+            <img [src]="previewImage" alt="Preview" />
+          </div>
+        }
       </div>
-    </div>
-
-    <div class="details" *ngIf="selectedfamous">
-      <button class="close-btn" (click)="closeDetails()">✕</button>
-
-      <div class="details-text">
-        <h2 class="primary-color mb-4 fw-bold">
-          {{ selectedfamous.name }}
-        </h2>
-        <p>{{ selectedfamous.description }}</p>
-      </div>
-
-      <div class="details-images">
-        <img
-          *ngFor="let img of selectedfamous.gallery"
-          [src]="img"
-          alt="famous view"
-          (click)="openPreview(img)"
-        />
-      </div>
-    </div>
-
-    <!-- ^ Image Preview Overlay -->
-    <div class="image-preview" *ngIf="previewImage" (click)="closePreview()">
-      <img [src]="previewImage" alt="Preview" />
-    </div>
-  </div>
-</section>
+    </section>

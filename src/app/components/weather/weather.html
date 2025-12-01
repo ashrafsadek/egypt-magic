@@ -7,15 +7,17 @@
       (mouseup)="stopDrag()"
       (mouseleave)="stopDrag()"
       (mousemove)="drag($event)">
-      <div class="col-12 col-lg-4 col-md-6 scroll-area" *ngFor="let item of weatherData">
-        <div class="d-flex align-items-center gap-3 p-4 bg-white rounded-4 shadow" >
-          <img [src]="item.current.condition.icon" alt="Weather condition icon">
-          <div>
-            <h3 class="fw-bold fs-5 mb-1">{{ item.location.name }}</h3>
-            <p class="mb-0 text-muted fs-5">{{ item.current.temp_c }}°C, {{ item.current.condition.text }}</p>
+      @for (item of weatherData; track item) {
+        <div class="col-12 col-lg-4 col-md-6 scroll-area">
+          <div class="d-flex align-items-center gap-3 p-4 bg-white rounded-4 shadow" >
+            <img [src]="item.current.condition.icon" alt="Weather condition icon">
+            <div>
+              <h3 class="fw-bold fs-5 mb-1">{{ item.location.name }}</h3>
+              <p class="mb-0 text-muted fs-5">{{ item.current.temp_c }}°C, {{ item.current.condition.text }}</p>
+            </div>
           </div>
         </div>
-      </div>
+      }
     </div>
   </div>
 </section>

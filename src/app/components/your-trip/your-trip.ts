@@ -1,5 +1,5 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import html2canvas from 'html2canvas';
 
 interface City {
@@ -32,7 +32,7 @@ interface SavedPlan {
 @Component({
     selector: 'app-your-trip',
     standalone: true,
-    imports: [CommonModule],
+    imports: [],
     templateUrl: './your-trip.html',
     styleUrls: ['./your-trip.css']
 })
